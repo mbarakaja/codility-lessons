@@ -23,14 +23,11 @@
 """
 
 def solution(A):
-    seen = {}
+    N = len(A)
+    seen = [False] * (N + 1)
 
-    for item in A:
-        if item > 0:
-            seen[item] = True
+    for index, value in enumerate(A):
+        if 1 <= value <= N:
+            seen[value - 1] = True
 
-    for K in range(1, 1000001):
-        try:
-            seen[K]
-        except KeyError:
-            return K
+    return seen.index(False) + 1
